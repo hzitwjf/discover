@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by Administrator on 2016/12/31.
  */
-@WebServlet("/checkLogin")
+@WebServlet(name = "checkLoginServlet",urlPatterns = "/checkLogin")
 public class checkLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -29,7 +29,7 @@ public class checkLoginServlet extends HttpServlet {
         if (u!=null){
             url="/toBeginComment";
         }else {
-            url="/index.jsp";
+            url="/toLogin";
         }
         response.sendRedirect(url);
     }

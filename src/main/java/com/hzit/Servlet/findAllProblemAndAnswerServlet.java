@@ -20,13 +20,14 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/12/31.
  */
-@WebServlet("/findAllProblemAndAnswer")
+@WebServlet(name = "findAllProblemAndAnswerServlet",urlPatterns = "/findAllProblemAndAnswer")
 public class findAllProblemAndAnswerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         ProblemBiz problemBiz=new ProblemBizImpl();
         AnswerBiz answerBiz=new AnswerBizImpl();
         Collection<List<Answer>> listCollection=new ArrayList<List<Answer>>();

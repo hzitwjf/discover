@@ -13,7 +13,9 @@ public class CheckSql {
     }
 
     public String getFindCheckByCheckPwdSql() {
-        findCheckByCheckPwdSql="SELECT * FROM `check` WHERE checkPwd=?";
+        findCheckByCheckPwdSql="SELECT checkId,checkClass,checkTeacher,checkPwd,createTime," +
+                "DATE_FORMAT(createTime,'%y%m%d') createNumber,checkModule FROM `check`" +
+                "WHERE checkPwd=? AND DATE_FORMAT(createTime,'%y%m%d')=DATE_FORMAT(SYSDATE(),'%y%m%d')";
         return findCheckByCheckPwdSql;
     }
 }

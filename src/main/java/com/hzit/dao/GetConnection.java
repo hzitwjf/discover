@@ -20,6 +20,7 @@ public class GetConnection{
             String user="root";
             String password="hzit";
             connection= DriverManager.getConnection(url, user, password);
+            connection.setAutoCommit(false);
 	           /* System.out.println(connection.toString());
 	            System.out.println(connection.isClosed());*/
             return  connection;

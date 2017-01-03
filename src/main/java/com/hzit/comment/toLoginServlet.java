@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by Administrator on 2016/12/31.
+ * Created by Administrator on 2017/1/3.
  */
-@WebServlet(name = "toBeginCommentServlet",urlPatterns = "/toBeginComment")
-public class toBeginCommentServlet extends HttpServlet {
+@WebServlet(name ="toLoginServlet" ,urlPatterns = "/toLogin")
+public class toLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/BeginComment.jsp").forward(request,response);
+        doPost(request,response);
     }
 }

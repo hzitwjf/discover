@@ -26,6 +26,14 @@ public class CheckVo {
 	 */
 	private String createTime;
 	/**
+	 *  创建数字
+	 */
+	private String createNumber;
+	/**
+	 *  学生昵称
+	 */
+	private String stuName;
+	/**
 	 *  考察模块，0代表餐饮 1代表讲师 2 代表班主任
 	 */
 	private Integer checkModule;
@@ -121,6 +129,37 @@ public class CheckVo {
 		this.checkModule = checkModule;
 	}
 
+	/**
+	 * 创建数字
+	 * @return createNumber
+	 */
+	public String getCreateNumber() {
+		return createNumber;
+	}
+
+	/**
+	 * 创建数字
+	 * @param createNumber
+	 */
+	public void setCreateNumber(String createNumber) {
+		this.createNumber = createNumber;
+	}
+
+	/**
+	 * 学生昵称
+	 * @return stuName
+	 */
+	public String getStuName() {
+		return stuName;
+	}
+
+	/**
+	 * 学生昵称
+	 * @param stuName
+	 */
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
 	@Override
 	public String toString() {
 		return "CheckVo{" +
@@ -129,6 +168,8 @@ public class CheckVo {
 				", checkTeacher='" + checkTeacher + '\'' +
 				", checkPwd=" + checkPwd +
 				", createTime='" + createTime + '\'' +
+				", createNumber='" + createNumber + '\'' +
+				", stuName='" + stuName + '\'' +
 				", checkModule=" + checkModule +
 				'}';
 	}

@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-<h1>hello</h1>
+<h1><span>当前登录人：${sessionScope.checkVo.stuName}</span>&nbsp;<span>被评论人：${sessionScope.checkVo.checkTeacher}</span></h1>
 <c:forEach items="${requestScope.problem}" var="p">
   <h4>${p.proContent}</h4>
   <c:forEach items="${requestScope.answerList}" var="list">

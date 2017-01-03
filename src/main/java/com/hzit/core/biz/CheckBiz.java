@@ -1,6 +1,7 @@
 package com.hzit.core.biz;
 
 import com.hzit.dao.entity.Check;
+import com.hzit.dao.vo.CheckVo;
 
 import java.io.Serializable;
 
@@ -9,5 +10,5 @@ import java.io.Serializable;
  */
 public interface CheckBiz {
     int addCheck(Check check);
-    Check findCheckByCheckPwd(Serializable checkPwd);
+    CheckVo findCheckByCheckPwd(Serializable checkPwd);
 }

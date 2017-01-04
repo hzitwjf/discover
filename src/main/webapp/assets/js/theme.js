@@ -12,7 +12,7 @@ if (storageLoad('SelcetColor')) {
     storageSave(saveSelectColor);
     $('body').attr('class', 'theme-black')
 }
-
+$('body').attr('class','theme-white');
 
 // 本地缓存
 function storageSave(objectData) {

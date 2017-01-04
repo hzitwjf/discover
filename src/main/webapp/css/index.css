@@ -1,0 +1,88 @@
+body {
+    background-color: #eee;
+}
+.wrap {
+    width: 1200px;
+    margin: 30px auto 0;
+    position: relative;
+}
+header {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin: 50px auto;
+}
+header a {
+    color: #0e90d2;
+    font-size: 40px;
+}
+i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.home i {
+    background: url("../img/home.png");
+    background-size: 100% 100%;
+    margin: 5px 0 0 100px;
+    text-align: left;
+
+}
+.home a {
+    color: #999;
+}
+.direction i {
+    background: url("../img/Survey-direction.png");
+    background-size: 100% 100%;
+    margin:  10px 5px 0 0;
+}
+.direction span {
+    margin-right: 40px;
+}
+.wrap>.fl {
+    width: 300px;
+    text-align: center;
+    background-color: #fff;
+}
+.wrap>.fl a img {
+    width: 250px;
+}
+.wrap>.fl dl {
+    text-align: left;
+    color: #999;
+}
+.wrap>.fl dt,.wrap>.fl dd {
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid #ccc;
+}
+.wrap>.fl dt a,.wrap>.fl dd a {
+    display: block;
+    padding-left: 40px;
+    color: #999;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+}
+.wrap>.fl dd a {
+    padding-left: 65px;
+}
+.wrap>.fl>p {
+    font-size: 20px;
+    color: #999;
+    margin-top: 50px;
+    height: 30px;
+    line-height: 30px;
+}
+.wrap>.fl>p a {
+    color: #999
+}
+.home {
+    text-align: left;
+}
+.wrap>.fr {
+    transform: scale(0.7);
+    position: absolute;
+    right: -180px;
+    top: -100px;
+}

@@ -8,7 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title></title>
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script src="/assets/js/jquery.min.js"></script>
   </head>
   <body>
 <%--  <%
@@ -20,13 +23,29 @@
       out.print("你的IP地址是：" + ip);
     }
   %>--%>
-<form action="/checkLogin" method="post" onsubmit="return three()">
-  <span>用户名</span><input type="text" name="userName" placeholder="请输入用户名！" id="userName" onblur="one()">
-  <span id="uName" style="font-size: 8px;font-family: 微软雅黑;color: red;"></span> <br/>
-  <span>密码</span><input type="password" name="userPwd" placeholder="请输入密码！" id="userPwd" onblur="two()">
-  <span id="uPwd" style="font-size: 8px;font-family: 微软雅黑;color: red;"></span> <br/>
-  <input type="submit" value="登录"> <input type="reset" value="重置">
-</form>
+<script src="/assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+  <div class="tpl-login">
+    <div class="tpl-login-content">
+      <img src="/assets/img/logo.png">
+      <form class="am-form tpl-form-line-form" action="/checkLogin" method="post" onsubmit="return three()">
+        <div class="am-form-group">
+          <input type="text" name="userName" placeholder="请输入用户名！" id="userName" onblur="one()">
+          <span id="uName" style="font-size: 8px;font-family: 微软雅黑;color: red;"></span>
+        </div>
+
+        <div class="am-form-group">
+          <input type="password" name="userPwd" placeholder="请输入密码！" id="userPwd" onblur="two()">
+          <span id="uPwd" style="font-size: 8px;font-family: 微软雅黑;color: red;"></span>
+        </div>
+        <div class="am-form-group">
+          <input type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" value="提交">
+          <input type="reset" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" value="重置">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
   <script src="/js/jquery-3.0.0.js"></script>
 <script>
   function one(){

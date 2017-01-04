@@ -14,7 +14,10 @@ import java.io.Serializable;
  * Created by Administrator on 2016/12/31.
  */
 public class CheckBizImpl extends GetConnection implements CheckBiz {
-    private CheckSql checkSql=new CheckSql();
+    public CheckBizImpl(){
+        checkSql=new CheckSql();
+    }
+    private CheckSql checkSql;
     @Override
     public int addCheck(Check check) {
             try{

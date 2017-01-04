@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 楷体,Arail;
+    color: #333;
+}
+ul,ol {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    vertical-align: top;
+}
+input[type=radio],label {
+    cursor: pointer;
+}
+.cf:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+.cf {
+    *zoom:1;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}

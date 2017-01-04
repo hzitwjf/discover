@@ -12,8 +12,12 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
  * Created by Administrator on 2016/12/31.
  */
 public class UserBizImpl extends GetConnection implements UserBiz {
-    private UserSql userSql=new UserSql();
-    private Md5JiaMiBiz md5JiaMiBiz=new Md5JiaMiBizImpl();
+    public UserBizImpl(){
+        userSql=new UserSql();
+        md5JiaMiBiz=new Md5JiaMiBizImpl();
+    }
+    private UserSql userSql;
+    private Md5JiaMiBiz md5JiaMiBiz;
     @Override
     public User checkLogin(User user) {
         try {

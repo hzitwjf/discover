@@ -13,7 +13,11 @@ import java.util.List;
  * Created by Administrator on 2016/12/31.
  */
 public class AnswerBizImpl extends GetConnection implements AnswerBiz {
-    private AnswerSql answerSql=new AnswerSql();
+    public AnswerBizImpl() {
+        answerSql=new AnswerSql();
+    }
+
+    private AnswerSql answerSql;
     @Override
     public List<Answer> findAllAnswerByProId(Serializable proId) {
         try {

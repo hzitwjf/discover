@@ -30,7 +30,7 @@ public class studentLoginServlet extends HttpServlet {
             if (checkVo!=null){
                 checkVo.setStuName(stuName);
                 request.getSession().setAttribute("checkVo",checkVo);
-                response.sendRedirect("findAllProblemAndAnswer?proModule="+checkVo.getCheckModule());
+                response.sendRedirect("findAllProblemAndAnswer?hzitxx="+stuPwd+checkVo.getCheckModule()+stuPwd+checkVo.getCheckModule()+"&&proModule=??.com");
             }else {
                 printWriter.print("<h1>密码错误！请向班主任核对密码后再来</h1>");
             }

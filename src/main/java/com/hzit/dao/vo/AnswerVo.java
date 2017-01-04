@@ -16,11 +16,15 @@ public class AnswerVo {
 	/**
 	 *  答案分数
 	 */
-	private Integer ansSc;
+	private String  ansSc;
 	/**
 	 *  所属题目
 	 */
-	private Integer proId;
+	private String proId;
+	/**
+	 *  问题内容
+	 */
+	private String proContent;
 	/**
 	 * 答案ID
 	 * @param ansId
@@ -55,7 +59,7 @@ public class AnswerVo {
 	 * 答案分数
 	 * @param ansSc
 	 */
-	public void setAnsSc(Integer ansSc){
+	public void setAnsSc(String ansSc){
 		this.ansSc = ansSc;
 	}
 	
@@ -63,14 +67,14 @@ public class AnswerVo {
      * 答案分数
      * @return Integer
      */	
-    public Integer getAnsSc(){
+    public String getAnsSc(){
     	return ansSc;
     }
 	/**
 	 * 所属题目
 	 * @param proId
 	 */
-	public void setProId(Integer proId){
+	public void setProId(String proId){
 		this.proId = proId;
 	}
 	
@@ -78,17 +82,34 @@ public class AnswerVo {
      * 所属题目
      * @return Integer
      */	
-    public Integer getProId(){
+    public String getProId(){
     	return proId;
     }
+
+	/**
+	 * 问题内容
+	 * @return proContent
+	 */
+	public String getProContent() {
+		return proContent;
+	}
+
+	/**
+	 * 问题内容
+	 * @param proContent
+	 */
+	public void setProContent(String proContent) {
+		this.proContent = proContent;
+	}
 
 	@Override
 	public String toString() {
 		return "AnswerVo{" +
 				"ansId=" + ansId +
 				", ansContent='" + ansContent + '\'' +
-				", ansSc=" + ansSc +
-				", proId=" + proId +
+				", ansSc='" + ansSc + '\'' +
+				", proId='" + proId + '\'' +
+				", proContent='" + proContent + '\'' +
 				'}';
 	}
 }

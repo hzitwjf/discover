@@ -1,5 +1,9 @@
 package com.hzit.dao.vo;
 
+import com.hzit.dao.entity.Discuss;
+
+import java.util.List;
+
 /**
  * 
  * @author wjf
@@ -37,6 +41,10 @@ public class CommentVo {
 	 *  评论来自的班级
 	 */
 	private String comClass;
+	/**
+	 * 评论详情
+	 */
+	private List<Discuss> discusses;
 	/**
 	 * 评论ID
 	 * @param comId
@@ -158,17 +166,34 @@ public class CommentVo {
     	return comClass;
     }
 
+	/**
+	 * 评论详情
+	 * @return
+	 */
+	public List<Discuss> getDiscusses() {
+		return discusses;
+	}
+
+	/**
+	 * 评论详情
+	 * @param discusses
+	 */
+	public void setDiscusses(List<Discuss> discusses) {
+		this.discusses = discusses;
+	}
+
 	@Override
 	public String toString() {
 		return "CommentVo{" +
 				"comId=" + comId +
 				", comuuId='" + comuuId + '\'' +
-				", comTime=" + comTime +
+				", comTime='" + comTime + '\'' +
 				", comPeople='" + comPeople + '\'' +
 				", comModule='" + comModule + '\'' +
 				", comScore=" + comScore +
 				", codPeople='" + codPeople + '\'' +
 				", comClass='" + comClass + '\'' +
+				", discusses=" + discusses +
 				'}';
 	}
 }

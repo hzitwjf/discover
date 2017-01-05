@@ -46,54 +46,58 @@ public class addCommentAndDiscussServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        HttpSession session=request.getSession();
-        List<AnswerVo> answerVos= (List<AnswerVo>) session.getAttribute("answerVos");
-        CheckVo checkVo= (CheckVo) session.getAttribute("checkVo");
-        CommentVo commentVo=new CommentVo();
-        int score=0;
-        List<Discuss> discussList=new ArrayList<>();
-        commentVo.setCodPeople(checkVo.getCheckTeacher());
-        commentVo.setComPeople(checkVo.getStuName());
-        commentVo.setComuuId(UUID.randomUUID().toString());
-        switch (checkVo.getCheckModule()){
-            case 0:
-                commentVo.setComModule("餐饮");
-                break;
-            case 1:
-                commentVo.setComModule("教员");
-                break;
-            case 2:
-                commentVo.setComModule("教务");
-                break;
-            default:
-                commentVo.setComModule("未知");
-                break;
-        }
-        commentVo.setComClass(checkVo.getCheckClass());
-        for (AnswerVo answerVo : answerVos){
-            Discuss discuss=new Discuss();
-            discuss.setProId(Integer.parseInt(answerVo.getProId()));
-            discuss.setDisResult(answerVo.getAnsContent());
-            discuss.setComUuid(commentVo.getComuuId());
-            try{
-                score=score+Integer.parseInt(answerVo.getAnsSc());
-            }catch (Exception ex){
-                score=score+0;
-            }
-            discuss.setDisScore(answerVo.getAnsSc());
-            discussList.add(discuss);
-        }
-        commentVo.setComScore(score);
-        commentVo.setDiscusses(discussList);
-        CommentBiz commentBiz=new CommentBizImpl();
         try {
-            commentBiz.addComment(commentVo);
-            response.sendRedirect("/toSucess");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect("/500.jsp");
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            HttpSession session=request.getSession();
+            List<AnswerVo> answerVos= (List<AnswerVo>) session.getAttribute("answerVos");
+            CheckVo checkVo= (CheckVo) session.getAttribute("checkVo");
+            CommentVo commentVo=new CommentVo();
+            int score=0;
+            List<Discuss> discussList=new ArrayList<>();
+            commentVo.setCodPeople(checkVo.getCheckTeacher());
+            commentVo.setComPeople(checkVo.getStuName());
+            commentVo.setComuuId(UUID.randomUUID().toString());
+            switch (checkVo.getCheckModule()){
+                case 0:
+                    commentVo.setComModule("餐饮");
+                    break;
+                case 1:
+                    commentVo.setComModule("教员");
+                    break;
+                case 2:
+                    commentVo.setComModule("教务");
+                    break;
+                default:
+                    commentVo.setComModule("未知");
+                    break;
+            }
+            commentVo.setComClass(checkVo.getCheckClass());
+            for (AnswerVo answerVo : answerVos){
+                Discuss discuss=new Discuss();
+                discuss.setProId(Integer.parseInt(answerVo.getProId()));
+                discuss.setDisResult(answerVo.getAnsContent());
+                discuss.setComUuid(commentVo.getComuuId());
+                try{
+                    score=score+Integer.parseInt(answerVo.getAnsSc());
+                }catch (Exception ex){
+                    score=score+0;
+                }
+                discuss.setDisScore(answerVo.getAnsSc());
+                discussList.add(discuss);
+            }
+            commentVo.setComScore(score);
+            commentVo.setDiscusses(discussList);
+            CommentBiz commentBiz=new CommentBizImpl();
+            try {
+                commentBiz.addComment(commentVo);
+                response.sendRedirect("/toSucess");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                response.sendRedirect("/500.jsp");
+            }
+        }catch (Exception ex){
+
         }
     }
 }

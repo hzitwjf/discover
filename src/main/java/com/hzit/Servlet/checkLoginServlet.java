@@ -27,6 +27,7 @@ public class checkLoginServlet extends HttpServlet {
         User u=userBiz.checkLogin(user);
         String url="";
         if (u!=null){
+            request.getSession().setAttribute("user",u);
             url="/toBeginComment";
         }else {
             url="/toLogin";

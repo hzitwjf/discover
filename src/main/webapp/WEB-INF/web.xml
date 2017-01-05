@@ -3,4 +3,34 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <filter>
+        <filter-name>DoFiter</filter-name>
+        <filter-class>com.hzit.comment.DoFiter</filter-class>
+        <init-param>
+            <param-name>stuNameFilter</param-name>
+            <param-value>学生的过滤器启动</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DoFiter</filter-name>
+        <url-pattern>/toSucess</url-pattern>
+        <url-pattern>/showCommentDetails</url-pattern>
+        <url-pattern>/addCommentAndDiscuss</url-pattern>
+        <url-pattern>/findAllProblemAndAnswer</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.hzit.comment.AdminFilter</filter-class>
+        <init-param>
+            <param-name>AdminFilter</param-name>
+            <param-value>管理员的过滤器启动</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/toBeginComment</url-pattern>
+        <url-pattern>/GetRandomPwd</url-pattern>
+        <!--<url-pattern>/addCommentAndDiscuss</url-pattern>
+        <url-pattern>/findAllProblemAndAnswer</url-pattern>-->
+    </filter-mapping>
 </web-app>

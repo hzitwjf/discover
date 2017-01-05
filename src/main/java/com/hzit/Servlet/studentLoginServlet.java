@@ -36,7 +36,7 @@ public class studentLoginServlet extends HttpServlet {
                         "<head>\n" +
                         "  <meta charset=\"utf-8\">\n" +
                         "  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                        "  <title>增加成功</title>\n" +
+                        "  <title>登录失败</title>\n" +
                         "  <meta name=\"description\" content=\"这是一个 index 页面\">\n" +
                         "  <meta name=\"keywords\" content=\"index\">\n" +
                         "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +

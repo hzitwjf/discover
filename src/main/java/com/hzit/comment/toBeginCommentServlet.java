@@ -17,6 +17,10 @@ public class toBeginCommentServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/BeginComment.jsp").forward(request,response);
+       try {
+           request.getRequestDispatcher("/WEB-INF/view/BeginComment.jsp").forward(request,response);
+       }catch (Exception ex){
+
+       }
     }
 }

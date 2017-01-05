@@ -18,24 +18,28 @@ import java.io.PrintWriter;
 @WebServlet(name = "GetRandomPwdServlet",urlPatterns = "/GetRandomPwd")
 public class GetRandomPwdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        String className=request.getParameter("checkClass");
-        String teacherName=request.getParameter("checkTeacher");
-        String moduleId=request.getParameter("checkModule");
-        PrintWriter out=response.getWriter();
-        Integer pwd=(int)(Math.random()*9000+1000);
-        CheckBiz checkBiz=new CheckBizImpl();
-        Check check=new Check();
-        check.setCheckClass(className);
-        check.setCheckTeacher(teacherName);
-        check.setCheckPwd(pwd);
-        check.setCheckModule(Integer.parseInt(moduleId));
-        int i=checkBiz.addCheck(check);
-        if(i==1){
-            out.print("生成的密码是："+pwd);
-        }else {
-            out.print("生成失败！");
+        try {
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            String className=request.getParameter("checkClass");
+            String teacherName=request.getParameter("checkTeacher");
+            String moduleId=request.getParameter("checkModule");
+            PrintWriter out=response.getWriter();
+            Integer pwd=(int)(Math.random()*9000+1000);
+            CheckBiz checkBiz=new CheckBizImpl();
+            Check check=new Check();
+            check.setCheckClass(className);
+            check.setCheckTeacher(teacherName);
+            check.setCheckPwd(pwd);
+            check.setCheckModule(Integer.parseInt(moduleId));
+            int i=checkBiz.addCheck(check);
+            if(i==1){
+                out.print("生成的密码是："+pwd);
+            }else {
+                out.print("生成失败！");
+            }
+        }catch (Exception ex){
+
         }
         //out.print("className："+className+"teacherName："+teacherName+"生成的随机密码："+pwd+"评论的模块Id："+moduleId);
     }

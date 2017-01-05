@@ -17,6 +17,10 @@ public class ShowCommentDetailsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/view/ShowTeacherDetails.jsp").forward(request,response);
+        try {
+            request.getRequestDispatcher("/WEB-INF/view/ShowTeacherDetails.jsp").forward(request,response);
+        }catch (Exception ex){
+
+        }
     }
 }

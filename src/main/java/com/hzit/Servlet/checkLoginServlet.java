@@ -28,7 +28,11 @@ public class checkLoginServlet extends HttpServlet {
         String url="";
         if (u!=null){
             request.getSession().setAttribute("user",u);
-            url="/toBeginComment";
+            if (u.getUserRole()==1){
+                url="/toBeginComment";
+            }else {
+                url="/toAdminIndex";
+            }
         }else {
             url="/toLogin";
         }

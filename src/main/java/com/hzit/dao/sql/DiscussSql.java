@@ -5,17 +5,17 @@ package com.hzit.dao.sql;
  */
 public class DiscussSql {
     public DiscussSql(){
-        addDiscuss="INSERT INTO `discuss`(comUuid,proId,disResult,disScore) VALUES(?,?,?,?)";
+        addDiscussSql="INSERT INTO `discuss`(comUuid,proId,disResult,disScore) VALUES(?,?,?,?)";
     }
     /**
      * 增加评论详情的sql语句
      */
-   private String addDiscuss;
+   private String addDiscussSql;
     /**
      * 增加评论详情的sql语句
-     * @return addDiscuss
+     * @return addDiscussSql
      */
-    public String getAddDiscuss() {
-        return addDiscuss;
+    public String getAddDiscussSql() {
+        return addDiscussSql;
     }
 }

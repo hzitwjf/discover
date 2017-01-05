@@ -26,7 +26,7 @@ public class UserBizImpl extends GetConnection implements UserBiz {
             String oldPwd=md5JiaMiBiz.EncoderByMd5(str);
             String newPwd=md5JiaMiBiz.EncoderByMd5(oldPwd);
             user.setUserPwd(newPwd);
-            User use=qr.query(connection,userSql.getCheckLogin(),new BeanHandler<User>(User.class),user.getUserName(),user.getUserPwd());
+            User use=qr.query(connection,userSql.getCheckLoginSql(),new BeanHandler<User>(User.class),user.getUserName(),user.getUserPwd());
             return use;
         }catch (Exception ex){
             ex.printStackTrace();

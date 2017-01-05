@@ -30,7 +30,8 @@
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/toBeginComment</url-pattern>
         <url-pattern>/GetRandomPwd</url-pattern>
-        <!--<url-pattern>/addCommentAndDiscuss</url-pattern>
-        <url-pattern>/findAllProblemAndAnswer</url-pattern>-->
+        <url-pattern>/toAdminIndex</url-pattern>
+        <url-pattern>/pageUrl</url-pattern>
+        <url-pattern>/toShowAllComment</url-pattern>
     </filter-mapping>
 </web-app>

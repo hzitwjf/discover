@@ -103,4 +103,16 @@ public class CommentBizImpl extends GetConnection implements CommentBiz {
             return null;
         }
     }
+
+    @Override
+    public List<Comment> findAllTeacherName(Serializable moduleName) {
+        try{
+            open();
+            List<Comment> commentList=qr.query(connection,commentSql.getGetAllTeacherSql(),new BeanListHandler<Comment>(Comment.class),moduleName);
+            return commentList;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

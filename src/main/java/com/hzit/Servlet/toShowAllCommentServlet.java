@@ -48,6 +48,7 @@ public class toShowAllCommentServlet extends HttpServlet {
             }
             CommentBiz commentBiz=new CommentBizImpl();
             Integer count=commentBiz.getCountByModule(moduleName);
+            List<Comment> comments=commentBiz.findAllTeacherName(moduleName);
             int totalPages=0;
             //将总行数转换成页数
             if(count%30==0){
@@ -59,6 +60,7 @@ public class toShowAllCommentServlet extends HttpServlet {
             int startRow=(page-1)*30;
             List<Comment> commentList=commentBiz.searchCommentByPage(moduleName, page);
             HttpSession session=request.getSession();
+            session.setAttribute("teaName",comments);
             session.setAttribute("commentList",commentList);
             session.setAttribute("totalPages",totalPages);
             session.setAttribute("totalElements",count);

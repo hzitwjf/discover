@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
@@ -44,20 +45,20 @@
         </div>
         <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
           <div class="am-form-group tpl-table-list-select">
-            <select data-am-selected="{btnSize: 'sm'}">
-              <option value="option1">学生对老师的建议</option>
-              <option value="option2">IT业界</option>
-              <option value="option3">数码产品</option>
-              <option value="option3">笔记本电脑</option>
-              <option value="option3">平板电脑</option>
-              <option value="option3">只能手机</option>
-              <option value="option3">超极本</option>
+            <span>学生对老师的建议</span>
+            <span>
+              <select data-am-selected="{btnSize: 'sm'}" name="teaName" id="select">
+              <option value="未选择教师名字">-------------</option>
+                <c:forEach items="${sessionScope.teaName}" var="t">
+                  <option value="${t.codPeople}" >${t.codPeople}</option>
+                </c:forEach>
             </select>
+            </span>
           </div>
         </div>
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
           <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-            <input type="text" class="am-form-field ">
+            <input type="text" class="am-form-field "placeholder="根据老师名字查找评论信息">
              <span class="am-input-group-btn">
               <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
              </span>
@@ -68,110 +69,42 @@
           <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
             <thead>
             <tr>
-              <th>文章标题</th>
-              <th>作者</th>
-              <th>时间</th>
+              <th>评论人</th>
+              <th>被评论人</th>
+              <th>评论时间</th>
+              <th>评论的模块</th>
+              <th>总得分</th>
+              <th>评论来自的班级</th>
               <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="gradeX">
-              <td>Amaze UI 模式窗口</td>
-              <td>张鹏飞</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr class="even gradeC">
-              <td>有适配微信小程序的计划吗</td>
-              <td>天纵之人</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr class="gradeX">
-              <td>请问有没有amazeui 分享插件</td>
-              <td>王宽师</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr class="even gradeC">
-              <td>关于input输入框的问题</td>
-              <td>着迷</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <tr class="even gradeC">
-              <td>有没有发现官网上的下载包不好用</td>
-              <td>醉里挑灯看键</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-
-            <tr class="even gradeC">
-              <td>我建议WEB版本文件引入问题</td>
-              <td>罢了</td>
-              <td>2016-09-26</td>
-              <td>
-                <div class="tpl-table-black-operation">
-                  <a href="javascript:;">
-                    <i class="am-icon-pencil"></i> 编辑
-                  </a>
-                  <a href="javascript:;" class="tpl-table-black-operation-del">
-                    <i class="am-icon-trash"></i> 删除
-                  </a>
-                </div>
-              </td>
-            </tr>
-            <!-- more data -->
+            <c:forEach items="${sessionScope.commentList}" var="c">
+              <tr class="gradeX">
+                <td>
+                  <input type="hidden" value="${c.comId}">
+                  ${c.comPeople}
+                  <input type="hidden" value="${c.comuuId}">
+                </td>
+                <td>${c.codPeople}</td>
+                <td>${c.comTime}</td>
+                <td>${c.comModule}</td>
+                <td>${c.comScore}</td>
+                <td>${c.comClass}</td>
+                <td>
+                  <div class="tpl-table-black-operation">
+                    <a href="javascript:;">
+                      <i class="am-icon-pencil"></i> 查看详情
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
         </div>
         <div class="am-u-lg-12 am-cf">
-
+          <span style="color: #0e93d7;font-family: 微软雅黑;font-size: 20px">共${sessionScope.totalElements}条评论，合计${sessionScope.totalPages}页</span>
           <div class="am-fr">
             <ul class="am-pagination tpl-pagination">
               <li class="am-disabled"><a href="#">«</a></li>
@@ -190,8 +123,14 @@
 </div>
 </div>
 <script src="/assets/js/amazeui.min.js"></script>
-<script src="/assets/js/amazeui.datatables.min.js"></script>
-<script src="/assets/js/dataTables.responsive.min.js"></script>
 <script src="/assets/js/app.js"></script>
+<script>
+  $(function () {
+    $("#select").change(function () {
+      var name=$("#select").val();
+      console.log(name)
+    });
+  });
+</script>
 </body>
 </html>

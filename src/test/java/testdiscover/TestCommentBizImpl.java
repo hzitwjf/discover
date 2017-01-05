@@ -62,4 +62,9 @@ public class TestCommentBizImpl{
         commentList.forEach(comment -> System.out.println(comment.toString()));
 
     }
+    @Test
+    public void findAllTeacher(){
+        List<Comment> commentList=commentBiz.findAllTeacherName("教员");
+        commentList.forEach(comment -> System.out.println(comment.getCodPeople()));
+    }
 }

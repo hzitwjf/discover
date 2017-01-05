@@ -15,4 +15,5 @@ public interface CommentBiz {
     List<Comment> searchCommentByPage(Serializable moduleName,Serializable page);
     List<Comment> searchCommentByPage(Serializable moduleName);
     Integer getCountByModule(Serializable moduleName);
+    List<Comment> findAllTeacherName(Serializable moduleName);
 }

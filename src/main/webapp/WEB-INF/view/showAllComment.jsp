@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-          <form action="/doShowAllComment" method="post">
+          <form action="/doSomeOneComment" method="post">
             <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                 <input type="text" class="am-form-field "placeholder="根据老师名字查找评论信息" name="likeName" id="text">
                 <span class="am-input-group-btn">

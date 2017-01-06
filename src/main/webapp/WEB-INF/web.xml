@@ -39,5 +39,6 @@
         <url-pattern>/doFindAllTeacherAvgScore</url-pattern>
         <url-pattern>/showSomeOneComment</url-pattern>
         <url-pattern>/OneComment</url-pattern>
+        <url-pattern>/doSomeOneComment</url-pattern>
     </filter-mapping>
 </web-app>

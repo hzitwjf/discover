@@ -33,5 +33,6 @@
         <url-pattern>/toAdminIndex</url-pattern>
         <url-pattern>/pageUrl</url-pattern>
         <url-pattern>/toShowAllComment</url-pattern>
+        <url-pattern>/doShowAllComment</url-pattern>
     </filter-mapping>
 </web-app>

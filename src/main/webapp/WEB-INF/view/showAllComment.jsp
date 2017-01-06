@@ -27,6 +27,20 @@
       </div>
       <div class="widget-body  am-fr">
 
+
+        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+          <div class="am-form-group tpl-table-list-select" style="width: 500px;">
+            <span>学生对老师的建议</span>
+            <span>
+              <select data-am-selected="{btnSize: 'sm'}" name="teaName" id="select">
+              <option value="未选择教师名字">-------------</option>
+                <c:forEach items="${requestScope.teaName}" var="t">
+                  <option value="${t.codPeople}" >${t.codPeople}</option>
+                </c:forEach>
+            </select>
+            </span>
+          </div>
+        </div>
         <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
           <div class="am-form-group">
             <div class="am-btn-toolbar">
@@ -41,19 +55,6 @@
                 </button>--%>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
-          <div class="am-form-group tpl-table-list-select">
-            <span>学生对老师的建议</span>
-            <span>
-              <select data-am-selected="{btnSize: 'sm'}" name="teaName" id="select">
-              <option value="未选择教师名字">-------------</option>
-                <c:forEach items="${sessionScope.teaName}" var="t">
-                  <option value="${t.codPeople}" >${t.codPeople}</option>
-                </c:forEach>
-            </select>
-            </span>
           </div>
         </div>
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
@@ -79,7 +80,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${sessionScope.commentList}" var="c">
+            <c:forEach items="${requestScope.commentList}" var="c">
               <tr class="gradeX">
                 <td>
                   <input type="hidden" value="${c.comId}">
@@ -104,18 +105,34 @@
           </table>
         </div>
         <div class="am-u-lg-12 am-cf">
-          <span style="color: #0e93d7;font-family: 微软雅黑;font-size: 20px">共${sessionScope.totalElements}条评论，合计${sessionScope.totalPages}页</span>
-          <div class="am-fr">
-            <ul class="am-pagination tpl-pagination">
-              <li class="am-disabled"><a href="#">«</a></li>
-              <li class="am-active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
-          </div>
+          <span style="color: #0e93d7;font-family: 微软雅黑;font-size: 20px">共${totalElements}条评论，合计${totalPages}页</span>
+          <c:if test="${totalPages!=0}">
+          <div class="am-cf">
+            <div class="am-fr">
+              <ul class="am-pagination">
+                <c:if test="${(currentPage-1)<0}">
+                  <li class="am-disabled"><a href="/doShowAllComment?page=${currentPage-1}">«</a></li>
+                </c:if>
+                <c:if test="${(currentPage-1)>=0}">
+                  <li><a href="/doShowAllComment?page=${currentPage-1}">«</a></li>
+                </c:if>
+                <c:forEach begin="0" end="${totalPages-1}" var="p">
+                  <c:if test="${currentPage==p}">
+                    <li class="am-active"><a href="/doShowAllComment?page=${p}">${p+1}</a></li>
+                  </c:if>
+                  <c:if test="${currentPage!=p}">
+                    <li><a href="/doShowAllComment?page=${p}">${p+1}</a></li>
+                  </c:if>
+                </c:forEach>
+                <c:if test="${currentPage<(totalPages-1)}">
+                  <li><a href="/doShowAllComment?page=${currentPage+1}">»</a></li>
+                </c:if>
+                <c:if test="${currentPage>=(totalPages-1)}">
+                  <li class="am-disabled"><a href="/doShowAllComment?page=${currentPage+1}">»</a></li>
+                </c:if>
+              </ul>
+            </div>
+            </c:if>
         </div>
       </div>
     </div>

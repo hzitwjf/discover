@@ -38,34 +38,10 @@ public class toShowAllCommentServlet extends HttpServlet {
             }else {
                 moduleName="未知";
             }
-            String p=request.getParameter("page");
-            if (p==null || p.equals("") ){
-                p="0";
-            }
-            Integer page=Integer.parseInt(p);
-            if (page<0){
-                page=0;
-            }
-            CommentBiz commentBiz=new CommentBizImpl();
-            Integer count=commentBiz.getCountByModule(moduleName);
-            List<Comment> comments=commentBiz.findAllTeacherName(moduleName);
-            int totalPages=0;
-            //将总行数转换成页数
-            if(count%30==0){
-                totalPages=count/30;
-            }else {
-                totalPages=count/30+1;
-            }
-            //将页数转换成起始行
-            int startRow=(page-1)*30;
-            List<Comment> commentList=commentBiz.searchCommentByPage(moduleName, page);
             HttpSession session=request.getSession();
-            session.setAttribute("teaName",comments);
-            session.setAttribute("commentList",commentList);
-            session.setAttribute("totalPages",totalPages);
-            session.setAttribute("totalElements",count);
+            session.setAttribute("moduleName",moduleName);
             PrintWriter out=response.getWriter();
-            out.write("/pageUrl?url=/WEB-INF/view/showAllComment.jsp");
+            out.write("/doShowAllComment");
         }catch (Exception ex){
 
         }

@@ -32,7 +32,7 @@ public class CommentVo {
 	/**
 	 *  当前模块的总得分
 	 */
-	private Integer comScore;
+	private double comScore;
 	/**
 	 *  被评论人
 	 */
@@ -124,7 +124,7 @@ public class CommentVo {
 	 * 当前模块的总得分
 	 * @param comScore
 	 */
-	public void setComScore(Integer comScore){
+	public void setComScore(double comScore){
 		this.comScore = comScore;
 	}
 	
@@ -132,7 +132,7 @@ public class CommentVo {
      * 当前模块的总得分
      * @return Integer
      */	
-    public Integer getComScore(){
+    public double getComScore(){
     	return comScore;
     }
 	/**

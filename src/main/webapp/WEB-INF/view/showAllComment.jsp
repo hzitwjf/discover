@@ -96,7 +96,7 @@
                 <td>${c.comClass}</td>
                 <td>
                   <div class="tpl-table-black-operation">
-                    <a href="javascript:;">
+                    <a href="/ShowAllTeacherSugesst?comUuid=${c.comuuId}">
                       <i class="am-icon-pencil"></i> 查看详情
                     </a>
                   </div>
@@ -149,7 +149,9 @@
   $(function () {
     $("#select").change(function () {
       var name=$("#select").val();
-      console.log(name)
+        if(confirm("确定查看学生给"+name+"老师的建议吗？")){
+            window.location="/OneComment?teaName="+name;
+        }
     });
   });
 </script>

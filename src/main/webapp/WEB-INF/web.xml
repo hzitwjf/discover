@@ -34,5 +34,10 @@
         <url-pattern>/pageUrl</url-pattern>
         <url-pattern>/toShowAllComment</url-pattern>
         <url-pattern>/doShowAllComment</url-pattern>
+        <url-pattern>/ShowAllTeacherSugesst</url-pattern>
+        <url-pattern>/toFindAllTeacherAvgScore</url-pattern>
+        <url-pattern>/doFindAllTeacherAvgScore</url-pattern>
+        <url-pattern>/showSomeOneComment</url-pattern>
+        <url-pattern>/OneComment</url-pattern>
     </filter-mapping>
 </web-app>

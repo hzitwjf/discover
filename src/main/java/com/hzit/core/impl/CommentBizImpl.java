@@ -7,6 +7,7 @@ import com.hzit.dao.entity.Discuss;
 import com.hzit.dao.sql.CommentSql;
 import com.hzit.dao.sql.DiscussSql;
 import com.hzit.dao.vo.CommentVo;
+import com.hzit.dao.vo.DiscussVo;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -18,7 +19,8 @@ import java.util.UUID;
 /**
  * Created by Administrator on 2017/1/4.
  */
-public class CommentBizImpl extends GetConnection implements CommentBiz {
+public class CommentBizImpl extends GetConnection implements CommentBiz
+{
     public CommentBizImpl() {
         commentSql=new CommentSql();
         discussSql=new DiscussSql();
@@ -91,12 +93,12 @@ public class CommentBizImpl extends GetConnection implements CommentBiz {
     }
 
     @Override
-    public List<Comment> searchCommentByTeaName(Serializable teaName) {
+    public List<DiscussVo> searchDiscussByTeaName(Serializable teaName) {
         try {
             open();
-            List<Comment> commentList=
-                    qr.query(connection, commentSql.getFindCommentByModuleSql(), new BeanListHandler<Comment>(Comment.class), teaName);
-            return commentList;
+            List<DiscussVo> discussVoList=
+                    qr.query(connection, commentSql.getFindCommentByModuleSql(), new BeanListHandler<DiscussVo>(DiscussVo.class), teaName);
+            return discussVoList;
         }catch (Exception ex){
             ex.printStackTrace();
             return null;
@@ -109,6 +111,20 @@ public class CommentBizImpl extends GetConnection implements CommentBiz {
             open();
             long aLong=
                     qr.query(connection, commentSql.getGetCountByModuleSql(),new ScalarHandler<Long>(),moduleName);
+            int allCount=(int)aLong;
+            return allCount;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Integer getCountByCodPeople(Serializable codPeople) {
+        try {
+            open();
+            long aLong=
+                    qr.query(connection, commentSql.getGetCountByCodPeopleSql(),new ScalarHandler<Long>(),codPeople);
             int allCount=(int)aLong;
             return allCount;
         }catch (Exception ex){

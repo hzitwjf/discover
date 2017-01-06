@@ -13,6 +13,7 @@ public class CommentSql {
         getCountByModuleSql="SELECT COUNT(0) FROM `comment` WHERE comModule=?";
         getAllTeacherSql="select DISTINCT(codPeople) from `comment` where comModule=?";
         searchCommentByTeaNameAndPageSql="SELECT * FROM `comment` WHERE comModule=? AND codPeople LIKE CONCAT('%',?,'%') LIMIT ?,30";
+        getCountByCodPeopleSql="SELECT COUNT(0) FROM `comment` WHERE codPeople LIKE  CONCAT('%',?,'%')";
     }
     /**
      * 增加评论的sql语句
@@ -38,6 +39,10 @@ public class CommentSql {
      * 根据教师名字查询评论信息
      */
     private String searchCommentByTeaNameAndPageSql;
+    /**
+     * 根据教师名字查询总行数
+     */
+    private String getCountByCodPeopleSql;
     /**
      * 增加评论的sql语句
      * @return addCommentSql
@@ -84,5 +89,13 @@ public class CommentSql {
      */
     public String getSearchCommentByTeaNameAndPageSql() {
         return searchCommentByTeaNameAndPageSql;
+    }
+
+    /**
+     * 根据教师名字查询总行数
+     * @return getCountByCodPeopleSql
+     */
+    public String getGetCountByCodPeopleSql() {
+        return getCountByCodPeopleSql;
     }
 }

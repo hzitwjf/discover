@@ -29,19 +29,23 @@ import java.util.UUID;
 @WebServlet(name = "addCommentAndDiscussServlet",urlPatterns = "/addCommentAndDiscuss")
 public class addCommentAndDiscussServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
-        String question=request.getParameter("question");
-        List<AnswerVo> answerVos=JSON.parseArray(question, AnswerVo.class);
+        try{
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            String question=request.getParameter("question");
+            List<AnswerVo> answerVos=JSON.parseArray(question, AnswerVo.class);
         /*for (AnswerVo answerVo : answerVos){
             System.out.println(answerVo.toString());
         }*/
-        PrintWriter out=response.getWriter();
-        if (question!=null && answerVos.size()!=0){
-            request.getSession().setAttribute("answerVos",answerVos);
-            out.print(1);
-        }else {
-            out.print(-1);
+            PrintWriter out=response.getWriter();
+            if (question!=null && answerVos.size()!=0){
+                request.getSession().setAttribute("answerVos",answerVos);
+                out.print(1);
+            }else {
+                out.print(-1);
+            }
+        }catch (Exception ex){
+
         }
     }
 

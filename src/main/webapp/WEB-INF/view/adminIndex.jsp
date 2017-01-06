@@ -48,10 +48,10 @@
             <a href="javascript:void (0)"><span>餐饮调查结果</span></a>
           </li>--%>
           <li class="am-text-sm he">
-            <a href="javascript:void (0)"><span>讲师调查结果</span></a>
+            <a href="javascript:void (0)"><span class="avg" moduleId="1">讲师调查结果</span></a>
           </li>
           <li class="am-text-sm he">
-            <a href="javascript:void (0)"><span>班主任调查结果</span></a>
+            <a href="javascript:void (0)"><span class="avg" moduleId="2">班主任调查结果</span></a>
           </li>
         </ul>
       </div>
@@ -74,8 +74,8 @@
 
   </header>
   <!-- 内容区域 -->
-    <iframe src="/pageUrl" width="100%" scrolling="no" height="100%" frameborder="0" id="ram"></iframe>
-
+    <%--<iframe src="/pageUrl" width="100%" scrolling="no" height="100%" frameborder="0" id="ram" onload="iFrameHeight()"></iframe>--%>
+    <iframe src="/pageUrl" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="ram" onload="iFrameHeight()"></iframe>
 <script src="/assets/js/amazeui.min.js"></script>
 <script src="/assets/js/amazeui.datatables.min.js"></script>
 <script src="/assets/js/dataTables.responsive.min.js"></script>
@@ -91,7 +91,20 @@
         //alert(data)
       });
     });
+    $(".avg").click(function(){
+      $.post("/toFindAllTeacherAvgScore",{"comModule":$(this).attr("moduleId")},function(data){
+        $("#ram").attr("src",data);
+      });
+    });
   });
+  function iFrameHeight() {
+    var ifm= document.getElementById("ram");
+    var subWeb = document.frames ? document.frames["ram"].document : ifm.contentDocument;
+    if(ifm != null && subWeb != null) {
+      ifm.height = subWeb.body.scrollHeight;
+      ifm.width = subWeb.body.scrollWidth;
+    }
+  }
 </script>
 </body>
 </html>

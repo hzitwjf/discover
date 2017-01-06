@@ -33,6 +33,9 @@ public class doShowAllCommentServlet extends HttpServlet {
             String moduleName= (String) req.getSession().getAttribute("moduleName");
             String p=req.getParameter("page");
             String teaName=req.getParameter("likeName");
+            if (teaName!=null){
+                req.getSession().setAttribute("name",teaName);
+            }
             if (p==null || p.equals("") ){
                 p="0";
             }
@@ -40,10 +43,18 @@ public class doShowAllCommentServlet extends HttpServlet {
             if (page<0){
                 page=0;
             }
+            String name= (String) req.getSession().getAttribute("name");
+            Integer count=0;
             CommentBiz commentBiz=new CommentBizImpl();
-            Integer count=commentBiz.getCountByModule(moduleName);
+            if (name==null || name.equals("")){
+                count=commentBiz.getCountByModule(moduleName);
+            }else {
+                count=commentBiz.getCountByCodPeople(name);
+            }
+
             List<Comment> comments=commentBiz.findAllTeacherName(moduleName);
             int totalPages=0;
+
             //将总行数转换成页数
             if(count%30==0){
                 totalPages=count/30;
@@ -53,11 +64,13 @@ public class doShowAllCommentServlet extends HttpServlet {
             //将页数转换成起始行
             int startRow=(page)*30;
             List<Comment> commentList=null;
-            if (teaName==null || teaName.equals("")){
+            //System.out.println(name);
+            if (name==null || name.equals("")){
                 commentList=commentBiz.searchCommentByPage(moduleName, startRow);
             }else {
-                commentList=commentBiz.searchCommentByPage(moduleName,teaName,startRow);
+                commentList=commentBiz.searchCommentByPage(moduleName,name,startRow);
                 count=commentList.size();
+                //System.out.println(count);
             }
             req.setAttribute("teaName",comments);
             req.setAttribute("commentList",commentList);

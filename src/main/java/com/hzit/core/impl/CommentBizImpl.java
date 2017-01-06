@@ -78,11 +78,24 @@ public class CommentBizImpl extends GetConnection implements CommentBiz {
     }
 
     @Override
-    public List<Comment> searchCommentByPage(Serializable moduleName) {
+    public List<Comment> searchCommentByPage(Serializable moduleName, Serializable teaName, Serializable page) {
         try {
             open();
             List<Comment> commentList=
-                    qr.query(connection, commentSql.getFindCommentByModuleSql(), new BeanListHandler<Comment>(Comment.class), moduleName);
+                    qr.query(connection, commentSql.getSearchCommentByTeaNameAndPageSql(), new BeanListHandler<Comment>(Comment.class), moduleName,teaName,page);
+            return commentList;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Comment> searchCommentByTeaName(Serializable teaName) {
+        try {
+            open();
+            List<Comment> commentList=
+                    qr.query(connection, commentSql.getFindCommentByModuleSql(), new BeanListHandler<Comment>(Comment.class), teaName);
             return commentList;
         }catch (Exception ex){
             ex.printStackTrace();

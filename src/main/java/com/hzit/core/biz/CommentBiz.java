@@ -13,7 +13,8 @@ import java.util.List;
 public interface CommentBiz {
     int addComment(CommentVo commentVo) throws SQLException;
     List<Comment> searchCommentByPage(Serializable moduleName,Serializable page);
-    List<Comment> searchCommentByPage(Serializable moduleName);
+    List<Comment> searchCommentByPage(Serializable moduleName,Serializable teaName,Serializable page);
+    List<Comment> searchCommentByTeaName(Serializable teaName);
     Integer getCountByModule(Serializable moduleName);
     List<Comment> findAllTeacherName(Serializable moduleName);
 }

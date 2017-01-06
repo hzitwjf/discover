@@ -54,13 +54,14 @@ public class TestCommentBizImpl{
     }
     @Test
     public void searchCommentByPage(){
+        List<Comment> commentList=commentBiz.searchCommentByTeaName("吴佳峰");
         List<Comment> comments=commentBiz.searchCommentByPage("教员", 0);
-        List<Comment> commentList=commentBiz.searchCommentByPage("教务");
+        List<Comment> listComment=commentBiz.searchCommentByPage("教员","吴",0);
         Integer i=commentBiz.getCountByModule("教务");
         System.out.println(i);
         comments.forEach(comment -> System.out.println(comment.toString()));
         commentList.forEach(comment -> System.out.println(comment.toString()));
-
+        listComment.forEach(comment -> System.out.println(comment.toString()));
     }
     @Test
     public void findAllTeacher(){

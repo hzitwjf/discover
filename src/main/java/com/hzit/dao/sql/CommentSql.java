@@ -6,10 +6,13 @@ package com.hzit.dao.sql;
 public class CommentSql {
     public CommentSql() {
         addCommentSql="INSERT INTO `comment`(comuuId,comTime,comPeople,comModule,comScore,codPeople,comClass) VALUES(?,SYSDATE(),?,?,?,?,?)";
-        searchCommentByPageSql="SELECT * FROM `comment` WHERE comModule=? LIMIT ?,30";
-        findCommentByModuleSql="SELECT * FROM `comment` WHERE comModule=?";
+        searchCommentByPageSql="SELECT * FROM `comment` WHERE comModule=? ORDER BY codPeople LIMIT ?,30";
+        findCommentByModuleSql="SELECT * FROM " +
+                "(SELECT c.codPeople,c.comTime,p.proContent,d.* FROM `comment` c JOIN `discuss` d ON  c.comuuId=d.comuuId " +
+                "JOIN `problem` p ON d.proId=p.proId WHERE d.proId=35 ) r WHERE codPeople=?";
         getCountByModuleSql="SELECT COUNT(0) FROM `comment` WHERE comModule=?";
         getAllTeacherSql="select DISTINCT(codPeople) from `comment` where comModule=?";
+        searchCommentByTeaNameAndPageSql="SELECT * FROM `comment` WHERE comModule=? AND codPeople LIKE CONCAT('%',?,'%') LIMIT ?,30";
     }
     /**
      * 增加评论的sql语句
@@ -31,6 +34,10 @@ public class CommentSql {
      * 查找所有被评论的老师名字
      */
     private String getAllTeacherSql;
+    /**
+     * 根据教师名字查询评论信息
+     */
+    private String searchCommentByTeaNameAndPageSql;
     /**
      * 增加评论的sql语句
      * @return addCommentSql
@@ -69,5 +76,13 @@ public class CommentSql {
      */
     public String getGetAllTeacherSql() {
         return getAllTeacherSql;
+    }
+
+    /**
+     * 根据教师名字查询评论信息
+     * @return searchCommentByTeaNameAndPageSql
+     */
+    public String getSearchCommentByTeaNameAndPageSql() {
+        return searchCommentByTeaNameAndPageSql;
     }
 }

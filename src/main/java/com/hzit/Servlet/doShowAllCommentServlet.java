@@ -32,6 +32,7 @@ public class doShowAllCommentServlet extends HttpServlet {
         try {
             String moduleName= (String) req.getSession().getAttribute("moduleName");
             String p=req.getParameter("page");
+            String teaName=req.getParameter("likeName");
             if (p==null || p.equals("") ){
                 p="0";
             }
@@ -51,7 +52,13 @@ public class doShowAllCommentServlet extends HttpServlet {
             }
             //将页数转换成起始行
             int startRow=(page)*30;
-            List<Comment> commentList=commentBiz.searchCommentByPage(moduleName, startRow);
+            List<Comment> commentList=null;
+            if (teaName==null || teaName.equals("")){
+                commentList=commentBiz.searchCommentByPage(moduleName, startRow);
+            }else {
+                commentList=commentBiz.searchCommentByPage(moduleName,teaName,startRow);
+                count=commentList.size();
+            }
             req.setAttribute("teaName",comments);
             req.setAttribute("commentList",commentList);
             req.setAttribute("totalPages",totalPages);

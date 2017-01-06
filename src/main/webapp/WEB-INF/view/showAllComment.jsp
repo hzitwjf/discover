@@ -58,12 +58,14 @@
           </div>
         </div>
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
-          <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-            <input type="text" class="am-form-field "placeholder="根据老师名字查找评论信息">
-             <span class="am-input-group-btn">
-              <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
-             </span>
-          </div>
+          <form action="/doShowAllComment" method="post">
+            <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                <input type="text" class="am-form-field "placeholder="根据老师名字查找评论信息" name="likeName" id="text">
+                <span class="am-input-group-btn">
+                <input type="submit" class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" value="查找">
+               </span>
+            </div>
+          </form>
         </div>
 
         <div class="am-u-sm-12">
@@ -106,6 +108,7 @@
         </div>
         <div class="am-u-lg-12 am-cf">
           <span style="color: #0e93d7;font-family: 微软雅黑;font-size: 20px">共${totalElements}条评论，合计${totalPages}页</span>
+          <span style="margin-left: 310px;"><a href="javascript:history.go(-1)" class="am-btn am-btn-default am-btn-warning">返回</a></span>
           <c:if test="${totalPages!=0}">
           <div class="am-cf">
             <div class="am-fr">
@@ -137,6 +140,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 <script src="/assets/js/amazeui.min.js"></script>

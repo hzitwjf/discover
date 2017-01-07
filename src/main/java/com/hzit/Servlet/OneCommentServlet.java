@@ -24,7 +24,8 @@ public class OneCommentServlet extends HttpServlet {
             String teaName=request.getParameter("teaName");
             CommentBiz commentBiz=new CommentBizImpl();
             List<DiscussVo> discussVoList=commentBiz.searchDiscussByTeaName(teaName);
-            request.setAttribute("discussVoList",discussVoList);
+            //request.setAttribute("discussVoList",discussVoList);
+            request.getSession().setAttribute("discussVoList",discussVoList);
             request.getRequestDispatcher("/WEB-INF/view/showAllTeacherSuggest.jsp").forward(request,response);
         }catch (Exception ex){
 

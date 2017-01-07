@@ -37,7 +37,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${requestScope.discussVoList}" var="d">
+            <c:forEach items="${sessionScope.discussVoList}" var="d">
               <tr class="gradeX">
                 <td>${d.codPeople}</td>
                 <td>${d.comTime}</td>
@@ -53,7 +53,10 @@
             </tbody>
           </table>
         </div>
-        <span style="margin-left: 525px;"><a href="javascript:history.go(-1)" class="am-btn am-btn-default am-btn-warning">返回</a></span>
+        <span style="margin-left: 525px;">
+          <a href="javascript:history.go(-1)" class="am-btn am-btn-default am-btn-warning">返回</a>
+          <a href="/load.do" class="am-btn am-btn-default am-btn-primary">导出到excel</a>
+        </span>
     </div>
   </div>
 </div>

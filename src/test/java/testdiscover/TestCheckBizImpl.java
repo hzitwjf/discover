@@ -18,7 +18,7 @@ public class TestCheckBizImpl {
     }
     @Test
     public void findCheckByCheckPwd(){
-        CheckVo checkVo=checkBiz.findCheckByCheckPwd(3866);
-        System.out.println(checkVo.toString());
+        //CheckVo checkVo=checkBiz.findCheckByCheckPwd(3866);
+        //System.out.println(checkVo.toString());
     }
 }

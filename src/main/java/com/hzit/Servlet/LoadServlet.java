@@ -28,9 +28,6 @@ public class LoadServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out=response.getWriter();
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
         try {
             List<DiscussVo> discussVoList= (List<DiscussVo>) request.getSession().getAttribute("discussVoList");
              //定义一个新的工作簿
@@ -55,13 +52,13 @@ public class LoadServlet extends HttpServlet {
                 i++;
             }
             //使用文件输出流输出文件
-            OutputStream outPut=response.getOutputStream();
-
             FileOutputStream fileOutputStream = new FileOutputStream("C:/"+teaName+".xls");
-            response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(teaName, "UTF-8")+".xls");
-            workbook.write(outPut);
+            //response.setHeader("content-disposition", "attachment;filename=" + URLEncoder.encode(teaName, "UTF-8")+".xls");
+            workbook.write(fileOutputStream);
             //关闭文件输出流
-            outPut.close();
+            fileOutputStream.close();
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out=response.getWriter();
             out.println("<html>\n" +
                     "<head>\n" +
                     "  <meta charset=\"utf-8\">\n" +
@@ -89,10 +86,11 @@ public class LoadServlet extends HttpServlet {
                     "  <div class=\"widget am-cf\" style=\"background-color: #ffffff;border: 0px solid #ffffff\">\n" +
                     "    <div class=\"widget-body\" >\n" +
                     "      <div class=\"tpl-page-state\">\n" +
-                    "        <div class=\"tpl-page-state-title am-text-center tpl-error-title\">loadToExcelSuccessful</div>\n" +
+                    "        <div class=\"tpl-page-state-title am-text-center tpl-error-title\">LoadExcelSuccessful</div>\n" +
                     "        <div class=\"tpl-error-title-info\">Data has  been properly increased so you are seeing this as a fallback.</div>\n" +
                     "        <div class=\"tpl-page-state-content tpl-error-content\">\n" +
-                    "          <p>恭喜你,数据导入成功</p>\n" +
+                    "\n" +
+                    "          <p>恭喜你,数据导入到excel成功！</p>\n" +
                     "          <a class=\"am-btn am-btn-secondary am-radius tpl-error-btn\" href=\"javascript:history.go(-2)\">Back Home</a>\n" +
                     "        </div>\n" +
                     "      </div>\n" +
@@ -106,7 +104,9 @@ public class LoadServlet extends HttpServlet {
                     "\n" +
                     "</body>\n" +
                     "</html>");
-        }catch (Exception ex){
+        }catch (Exception ex) {
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out=response.getWriter();
             out.println("<html>\n" +
                     "<head>\n" +
                     "  <meta charset=\"utf-8\">\n" +
@@ -134,12 +134,12 @@ public class LoadServlet extends HttpServlet {
                     "  <div class=\"widget am-cf\" style=\"background-color: #ffffff;border: 0px solid #ffffff\">\n" +
                     "    <div class=\"widget-body\" >\n" +
                     "      <div class=\"tpl-page-state\">\n" +
-                    "        <div class=\"tpl-page-state-title am-text-center tpl-error-title\">loadToExcelDefeat</div>\n" +
-                    "        <div class=\"tpl-error-title-info\">Data has not  been properly increased so you are seeing this as a fallback.</div>\n" +
+                    "        <div class=\"tpl-page-state-title am-text-center tpl-error-title\">LoadExcelDefeat</div>\n" +
+                    "        <div class=\"tpl-error-title-info\">Data has not been properly increased so you are seeing this as a fallback.</div>\n" +
                     "        <div class=\"tpl-page-state-content tpl-error-content\">\n" +
                     "\n" +
-                    "          <p>sorry，数据导入excel发生未知错误！</p>\n" +
-                    "          <a class=\"am-btn am-btn-secondary am-radius tpl-error-btn\" href=\"javascript:history.go(-2)\">Back Home</a>\n" +
+                    "          <p>恭喜你,数据导入到excel失败！</p>\n" +
+                    "          <a class=\"am-btn am-btn-secondary am-radius tpl-error-btn\" href=\"/pageUrl?url=WEB-INF/view/XiaoHui.jsp\">Back Home</a>\n" +
                     "        </div>\n" +
                     "      </div>\n" +
                     "    </div>\n" +

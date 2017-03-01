@@ -56,7 +56,12 @@
           <span style="font-size: 8px;font-family:微软雅黑;color: red ">要评论谁？留下他的名字！</span>
         </div>
         <div class="am-form-group">
-          <span>&nbsp;评论模块&nbsp;</span><input type="text" name="checkModule" placeholder="设置考察模块" id="checkModule">
+          <span>&nbsp;评论模块&nbsp;</span>
+          <select id="checkModule" style="cursor: pointer">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
           <span style="font-size: 8px;font-family:微软雅黑;color: red ">0代表餐饮 1代表讲师 2 代表班主任</span><br/>
         </div>
         <div class="am-form-group">

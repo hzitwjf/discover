@@ -12,7 +12,7 @@
   <script src="/js/jquery-3.0.0.js"></script>
   <script>
     $(function(){
-      var webSocket=new WebSocket("ws://192.168.0.162:8120/getChat");
+      var webSocket=new WebSocket("ws://127.0.0.1:8120/getChat");
       //开
       webSocket.onopen=function(){
         console.log("发起服务器链接成功");

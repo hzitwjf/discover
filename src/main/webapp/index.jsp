@@ -1,3 +1,4 @@
+<%@ page import="java.util.UUID" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -23,7 +24,9 @@
       String ip = request.getRemoteAddr();
       out.print("本机IP地址是：" + ip);
     }
-  %>
+    String name= UUID.randomUUID().toString();
+    name=name.substring(0,8);
+    %>
   <script src="/assets/js/theme.js"></script>
   <div class="am-g tpl-g">
     <div class="tpl-login">
@@ -31,7 +34,7 @@
           <img src="/assets/img/logo.png">
         <form class="am-form tpl-form-line-form" action="/login.do" method="post" onsubmit="return three()">
           <div class="am-form-group">
-            <input type="text" name="stuName" placeholder="请输入你的昵称！" id="stuName" onblur="one()">
+            <input type="text" name="stuName" placeholder="请输入你的昵称！" id="stuName" onblur="one()" value="<%=name%>">
             <span id="uName" style="font-size: 8px;font-family: 微软雅黑;color: red;"></span>
           </div>
 

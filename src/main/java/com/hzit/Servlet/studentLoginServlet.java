@@ -64,6 +64,7 @@ public class studentLoginServlet extends HttpServlet {
                         "        <div class=\"tpl-page-state-content tpl-error-content\">\n" +
                         "\n" +
                         "          <p>密码错误或者密码已失效，请向班主任核对密码后再来！</p>\n" +
+                        "          <p style=\"color:red;\">注释：密码一天之内有效，超时无效！请联系班主任重新申请密码</p>\n" +
                         "          <a class=\"am-btn am-btn-secondary am-radius tpl-error-btn\" href=\"/index.jsp\">Back Home</a>\n" +
                         "        </div>\n" +
                         "      </div>\n" +

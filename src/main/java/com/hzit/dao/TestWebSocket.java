@@ -52,7 +52,7 @@ public class TestWebSocket {
         String time=simpleDateFormat.format(new Date());
         for(TestWebSocket testWebSocket : copyOnWriteArraySet){
             try {
-                session.getBasicRemote().sendText("【"+time+"】的时候发送了<span style=\"color:red;font-size:15px;\">"+message+"！</span>");
+                session.getBasicRemote().sendText("【"+time+"】的时候发送了<span style=\"color:red;font-size:15px;\">"+message+"！</span><br/>");
             } catch (IOException e) {
                 e.printStackTrace();
             }

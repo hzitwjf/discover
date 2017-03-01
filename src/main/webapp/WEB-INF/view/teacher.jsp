@@ -49,7 +49,7 @@
 <script>
     $(function () {
         var question=new Array();
-        $("dd span:first-child input").each(function () {
+        $("dd span:nth-child(2) input").each(function () {
             this.checked = true;
             var proId=$(this).attr("proId");
             var ansSc=$(this).attr("ansSc");

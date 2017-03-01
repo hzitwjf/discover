@@ -18,7 +18,7 @@ public class GetConnection{
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://127.0.0.1:3306/decovre?useUnicode=true&characterEncoding=utf8";
             String user="root";
-            String password="hzit";
+            String password="Passw0rd";
             connection= DriverManager.getConnection(url, user, password);
             connection.setAutoCommit(false);
 	           /* System.out.println(connection.toString());

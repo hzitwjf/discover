@@ -21,8 +21,9 @@
   </div>
 </header>
 <p>
-  当前登录人：<span>${sessionScope.checkVo.stuName}</span>
-  <span>被评论人：${sessionScope.checkVo.checkTeacher}</span>
+  被评论人：<span>${sessionScope.checkVo.checkTeacher}</span>
+  <%--当前登录人：<span>${sessionScope.checkVo.stuName}</span>--%>
+  <%--<span>被评论人：${sessionScope.checkVo.checkTeacher}</span>--%>
 </p>
 <div class="wrap">
   <p>教员调查表</p>

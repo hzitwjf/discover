@@ -22,9 +22,19 @@ public class doSomeOneCommentServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         try {
+            CommentBiz commentBiz=new CommentBizImpl();
             String moduleName= (String) req.getSession().getAttribute("moduleName");
             String p=req.getParameter("page");
+            String name=(String)req.getSession().getAttribute("likeName");
+            String moduleId=null;
+            if(name!=null){
+                req.getSession().removeAttribute("likeName");
+            }
             String teaName=req.getParameter("likeName");
+            if (teaName!=null){
+                 moduleId=commentBiz.getCodPeopleComModule(teaName);
+            }
+            req.getSession().setAttribute("likeName",teaName);
             if (p==null || p.equals("") ){
                 p="0";
             }
@@ -33,8 +43,10 @@ public class doSomeOneCommentServlet extends HttpServlet {
                 page=0;
             }
             Integer count=0;
-            CommentBiz commentBiz=new CommentBizImpl();
-            count=commentBiz.getCountByCodPeople(teaName);
+
+            if (moduleName.equals(moduleId)) {
+                count = commentBiz.getCountByCodPeople(teaName);
+            }
             List<Comment> comments=commentBiz.findAllTeacherName(moduleName);
             int totalPages=0;
 
@@ -49,7 +61,7 @@ public class doSomeOneCommentServlet extends HttpServlet {
             List<Comment> commentList=null;
             //System.out.println(name);
                 commentList=commentBiz.searchCommentByPage(moduleName,teaName,startRow);
-                count=commentList.size();
+                //count=commentList.size();
                 //System.out.println(count);
 
             req.setAttribute("teaName",comments);

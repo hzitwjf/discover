@@ -69,4 +69,9 @@ public class TestCommentBizImpl{
         List<Comment> commentList=commentBiz.findAllTeacherName("教员");
         commentList.forEach(comment -> System.out.println(comment.getCodPeople()));
     }
+    @Test
+    public void getCodPeopleModuleId(){
+        String moduleName=commentBiz.getCodPeopleComModule("吴");
+        System.out.println(moduleName);
+    }
 }

@@ -144,4 +144,17 @@ public class CommentBizImpl extends GetConnection implements CommentBiz
             return null;
         }
     }
+
+    @Override
+    public String getCodPeopleComModule(String teaName) {
+        try{
+            open();
+            String moduleName=qr.query(connection,commentSql.getGetCodPeopleComModule(),new ScalarHandler<String>(),teaName);
+            return moduleName;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 }

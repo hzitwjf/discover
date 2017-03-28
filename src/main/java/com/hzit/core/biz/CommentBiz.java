@@ -19,5 +19,5 @@ public interface CommentBiz {
     Integer getCountByModule(Serializable moduleName);
     Integer getCountByCodPeople(Serializable codPeople);
     List<Comment> findAllTeacherName(Serializable moduleName);
-
+    String getCodPeopleComModule(String teaName);
 }

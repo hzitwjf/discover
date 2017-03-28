@@ -32,7 +32,10 @@ public class doShowAllCommentServlet extends HttpServlet {
         try {
             String moduleName= (String) req.getSession().getAttribute("moduleName");
             String p=req.getParameter("page");
-            String teaName=req.getParameter("likeName");
+            if(p==null || p.equals("")){
+                req.getSession().removeAttribute("likeName");
+            }
+            String teaName=(String)req.getSession().getAttribute("likeName");
             if (teaName!=null){
                 req.getSession().setAttribute("name",teaName);
             }
@@ -43,13 +46,14 @@ public class doShowAllCommentServlet extends HttpServlet {
             if (page<0){
                 page=0;
             }
-            String name= (String) req.getSession().getAttribute("name");
+            //String name= (String) req.getSession().getAttribute("name");
+
             Integer count=0;
             CommentBiz commentBiz=new CommentBizImpl();
-            if (name==null || name.equals("")){
+            if (teaName==null || teaName.equals("")){
                 count=commentBiz.getCountByModule(moduleName);
             }else {
-                count=commentBiz.getCountByCodPeople(name);
+                count=commentBiz.getCountByCodPeople(teaName);
             }
 
             List<Comment> comments=commentBiz.findAllTeacherName(moduleName);
@@ -65,11 +69,11 @@ public class doShowAllCommentServlet extends HttpServlet {
             int startRow=(page)*30;
             List<Comment> commentList=null;
             //System.out.println(name);
-            if (name==null || name.equals("")){
+            if (teaName==null || teaName.equals("")){
                 commentList=commentBiz.searchCommentByPage(moduleName, startRow);
             }else {
-                commentList=commentBiz.searchCommentByPage(moduleName,name,startRow);
-                count=commentList.size();
+                commentList=commentBiz.searchCommentByPage(moduleName,teaName,startRow);
+                //count=commentList.size();
                 //System.out.println(count);
             }
             req.setAttribute("teaName",comments);
